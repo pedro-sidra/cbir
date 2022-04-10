@@ -14,7 +14,7 @@ def download_tar(db_url):
     tar = db_path.name
     folder = db_path.name.split('.')[0]
 
-    if Path(folder).exists:
+    if Path(folder).exists():
         print(f"{folder} exists. Skipping")
         return folder
 
