@@ -68,3 +68,8 @@ def displayImages(df):
 def displayDf(df):
     """Render the df as an html table only with class, number and image"""
     display(render_df(df[["clas","num","image"]]))
+
+def get_largest_contour(im):
+    contours, hierarchy = cv2.findContours(im, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    cmax = sorted(contours, key=cv2.contourArea)[-1]
+    return cmax
