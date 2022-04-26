@@ -47,7 +47,7 @@ def load_db(db_folder):
     for file in Path(db_folder).glob("**/*.pgm"):
         className, num = fileClassExpr.match(file.stem).groups()
 
-        db.append(dict(clas=className.lower(), num=num, image=cv2.imread(str(file), cv2.IMREAD_GRAYSCALE), filepath=file))
+        db.append(dict(clas=className.lower(), num=num, image=255-cv2.imread(str(file), cv2.IMREAD_GRAYSCALE), filepath=file))
     
     return pd.DataFrame(data=db).reset_index(drop=True)
 
